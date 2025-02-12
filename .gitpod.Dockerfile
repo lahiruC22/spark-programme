@@ -11,7 +11,7 @@ RUN apt-get install -y nodejs
 
 # Copy backend and frontend code
 COPY task-1-challenge/taskone backend
-COPY frontend frontend
+COPY task-1-challenge/frontend frontend
 
 # Install backend dependencies and build
 WORKDIR /workspace/backend
