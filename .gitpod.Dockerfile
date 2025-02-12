@@ -5,9 +5,10 @@ FROM openjdk:21-jdk-slim
 WORKDIR /workspace
 
 # Install Node.js and npm
-RUN apt-get update && apt-get install -y curl
-RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
-RUN apt-get install -y nodejs
+RUN apt-get update && \
+    apt-get install -y curl gnupg && \
+    curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs
 
 # Copy backend and frontend code
 COPY task-1-challenge/taskone backend
