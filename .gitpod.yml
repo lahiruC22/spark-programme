@@ -1,0 +1,18 @@
+image:
+  file: .gitpod.Dockerfile
+
+ports:
+  - port: 8080
+    onOpen: open-preview
+    description: "Backend Spring Boot Application"
+  - port: 3000
+    onOpen: open-preview
+    description: "Frontend Application"
+
+tasks:
+  - name: Backend
+    init: ./mvnw install -f /task-1-challenge/taskone/pom.xml
+    command: java -jar backend/target/your-application.jar
+  - name: Frontend
+    init: npm install
+    command: npm start --prefix frontend
