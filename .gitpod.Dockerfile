@@ -1,22 +1,20 @@
-# Use an official OpenJDK runtime as a parent image
 FROM openjdk:21-jdk-slim
 
-# Set the working directory
 WORKDIR /workspace
 
-# Install Python for serving static files
-RUN apt-get update && apt-get install -y git python3
-
-# Copy backend and frontend code
-COPY task-1-challenge/taskone backend
-COPY task-1-challenge/frontend frontend
-
-# Install backend dependencies and build
+# Copy backend code and build
+COPY task-1-challenge/taskone /workspace/backend
 WORKDIR /workspace/backend
 RUN ./mvnw install
 
-# Expose ports
-EXPOSE 8080 3000
+# Copy the built JAR file to a smaller image (multi-stage build)
+FROM openjdk:21-jdk-slim
+WORKDIR /app
 
-# Command to run both applications
-CMD ["sh", "-c", "java -jar /workspace/backend/target/taskone-0.0.1-SNAPSHOT.jar & python3 -m http.server 3000 --directory /workspace/frontend"]
+# Copy the JAR and the static files in one go
+COPY --from=0 /workspace/backend/target/taskone-0.0.1-SNAPSHOT.jar /app/app.jar
+COPY --from=0 /workspace/backend/src/main/resources/static /app/static
+
+EXPOSE 8080
+
+CMD ["java", "-jar", "/app/app.jar"]

@@ -1,17 +1,6 @@
-image:
-  file: .gitpod.Dockerfile
+tasks:
+  - init: ./mvnw clean install -f backend/pom.xml  # Install backend dependencies
+  - command: java -jar /workspace/backend/target/taskone-0.0.1-SNAPSHOT.jar # Start Spring Boot
 
 ports:
-  - port: 8080
-    onOpen: open-preview
-    description: "Backend Spring Boot Application"
-  - port: 3000
-    onOpen: open-preview
-    description: "Frontend Application"
-
-tasks:
-  - name: Backend
-    init: ./mvnw install -f backend/pom.xml
-    command: java -jar backend/target/taskone-0.0.1-SNAPSHOT.jar
-  - name: Frontend
-    command: python3 -m http.server 3000 --directory frontend
+  - port: 8080 # Spring Boot
