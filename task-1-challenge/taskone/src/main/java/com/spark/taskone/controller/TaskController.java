@@ -1,7 +1,11 @@
-package com.spark.taskone;
+package com.spark.taskone.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import com.spark.taskone.model.Task;
+import com.spark.taskone.service.TaskService;
+
 import java.util.List;
 
 @RestController

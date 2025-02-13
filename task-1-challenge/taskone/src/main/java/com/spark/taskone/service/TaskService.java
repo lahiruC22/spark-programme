@@ -1,7 +1,11 @@
-package com.spark.taskone;
+package com.spark.taskone.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.spark.taskone.model.Task;
+import com.spark.taskone.repository.TaskRepository;
+
 import java.util.List;
 
 @Service
