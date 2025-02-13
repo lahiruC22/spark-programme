@@ -11,7 +11,7 @@ ports:
 
 tasks:
   - name: Backend
-    init: ./mvnw install -f /task-1-challenge/taskone/pom.xml
+    init: ./mvnw install -f backend/pom.xml
     command: java -jar backend/target/taskone-0.0.1-SNAPSHOT.jar
   - name: Frontend
     command: python3 -m http.server 3000 --directory frontend
