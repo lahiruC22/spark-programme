@@ -5,7 +5,7 @@ FROM openjdk:21-jdk-slim
 WORKDIR /workspace
 
 # Install Python for serving static files
-RUN apt-get update && apt-get install -y python3
+RUN apt-get update && apt-get install -y git python3
 
 # Copy backend and frontend code
 COPY task-1-challenge/taskone backend
