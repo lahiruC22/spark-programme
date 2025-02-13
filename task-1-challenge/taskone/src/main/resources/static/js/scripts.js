@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const description = document.getElementById('task-description').value;
 
         try {
-            const response = await fetch(`${apiBaseUrl}/api/tasks`, {
+            const response = await fetch(`/api/tasks`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ title, description, completed: false })
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadTasks() {
         try {
-            const response = await fetch(`${apiBaseUrl}/api/tasks`);
+            const response = await fetch(`/api/tasks`);
             if (!response.ok) {
                 console.error('Failed to load tasks. Status:', response.status);
                 taskList.innerHTML = '<p>Failed to load tasks.</p>'; // Provide user feedback in UI
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Expose functions to global scope
     window.toggleComplete = async function (id, completed) {
         try {
-            const response = await fetch(`${apiBaseUrl}/api/tasks/${id}`, {
+            const response = await fetch(`/api/tasks/${id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ completed })
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.deleteTask = async function (id) {
         if (confirm('Are you sure you want to delete this task?')) { // Added confirmation dialog
             try {
-                const response = await fetch(`${apiBaseUrl}/api/tasks/${id}`, { method: 'DELETE' });
+                const response = await fetch(`/api/tasks/${id}`, { method: 'DELETE' });
                 if (!response.ok) {
                     console.error('Failed to delete task. Status:', response.status);
                     return;
