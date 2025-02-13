@@ -19,4 +19,4 @@ RUN ./mvnw install
 EXPOSE 8080 3000
 
 # Command to run both applications
-CMD ["sh", "-c", "java -jar /workspace/backend/target/taskone.jar & python3 -m http.server 3000 --directory /workspace/frontend"]
+CMD ["sh", "-c", "java -jar /workspace/backend/target/taskone-0.0.1-SNAPSHOT.jar & python3 -m http.server 3000 --directory /workspace/frontend"]
