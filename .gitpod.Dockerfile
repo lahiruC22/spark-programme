@@ -6,7 +6,6 @@ WORKDIR /workspace
 
 # Install Python for serving static files
 RUN apt-get update && apt-get install -y git python3
-RUN mvn -N io.takari:maven:wrapper
 
 # Copy backend and frontend code
 COPY task-1-challenge/taskone backend
