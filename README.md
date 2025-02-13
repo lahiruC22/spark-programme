@@ -27,15 +27,11 @@ This is a simple To-Do List application built using Spring Boot for the backend 
    git clone https://github.com/lahiruC22/spark-programme
    cd todo-list-spring-boot
    ```
-2. Configure MongoDB connection in `application.properties`:
-   ```properties
-   spring.data.mongodb.uri=mongodb+srv://<username>:<password>@cluster0.mongodb.net/todoDB
-   ```
-3. Build and run the application:
+2. Build and run the application:
    ```bash
    mvn spring-boot:run
    ```
-4. The application will start on `http://localhost:8080/`
+3. The application will start on `http://localhost:8080/`
 
 ## Project Structure
 ```
@@ -50,8 +46,8 @@ This is a simple To-Do List application built using Spring Boot for the backend 
  │   ├── 📂 resources
  │   │   ├── 📂 static (Frontend files)
  │   │   │   ├── 📜 index.html
- │   │   │   ├── 📜 styles.css
- │   │   │   ├── 📜 script.js
+ │   │   │   ├── 📜 css/styles.css
+ │   │   │   ├── 📜 js/script.js
  │   │   ├── 📜 application.properties
 ```
 
